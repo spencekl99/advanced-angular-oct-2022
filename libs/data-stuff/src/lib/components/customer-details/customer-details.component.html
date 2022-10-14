@@ -1,0 +1,29 @@
+<div
+  *htSharedLoadingModes="
+    (customer$ | async)?.modes || null;
+    empty: emptyTemplate
+  "
+>
+  <ng-container *ngIf="(customer$ | async)?.data as customer">
+    <ht-ui-card-with-link
+      [title]="customer.firstName + ' ' + customer.lastName"
+    >
+      <p>Details about {{ customer.firstName + ' ' + customer.lastName }}</p>
+      <p>{{ customer.firstName }} works at {{ customer.company }}</p>
+      <p>You can email {{ customer.firstName }} at {{ customer.email }}</p>
+      <p>{{ customer.firstName }} address is {{ customer.address }}</p>
+    </ht-ui-card-with-link>
+  </ng-container>
+</div>
+
+<ng-template #emptyTemplate>
+  <ht-ui-alert alertStyle="warning">
+    <h3 class="text-3xl font-extrabold">Four Oh Four!</h3>
+    <p>Sorry - there is no longer a customer with that id.</p>
+    <a
+      class="btn btn-accent"
+      [routerLink]="['..', '..', 'list']"
+      >Back to the List</a
+    >
+  </ht-ui-alert>
+</ng-template>

@@ -1,0 +1,12 @@
+<section
+  class="grid grid-cols-1 gap-4 pt-4 md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-4"
+>
+  <ht-ui-card-with-link
+    [title]="item.title"
+    [link]="item.link"
+    [linkText]="item.linkText"
+    *ngFor="let item of items"
+  >
+    <div [innerHtml]="item.content"></div>
+  </ht-ui-card-with-link>
+</section>
